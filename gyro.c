@@ -3,9 +3,9 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-#define ACCELPATH "/sys/class/misc/FreescaleAccelerometer/"
-#define MAGNEPATH "/sys/class/misc/FreescaleMagnetometer/"
-#define GYROPATH "/sys/class/misc/FreescaleGyroscope/"
+#define ACCELPATH "/FreescaleAccelerometer/"
+#define MAGNEPATH "/FreescaleMagnetometer/"
+#define GYROPATH "/FreescaleGyroscope/"
 
 static int new_x, new_y;
 
