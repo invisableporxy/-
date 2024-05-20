@@ -6,6 +6,7 @@
 #include <sys/ioctl.h>
 #include <sys/types.h>
 #include <sys/msg.h>
+#include <sts/stat.h>
 #include <pthread.h>
 #include <stdbool.h>
 #include <math.h>
@@ -28,6 +29,13 @@
 #define MESSAGE_ID 1234
 #define MODE_STATIC_DIS 0
 
+
+#define bulletx
+#define bullety
+#define enemyx
+#define enemyy
+
+static int score;
 static int msgID;
 BUTTON_MSG_T rcv;
 pthread_t thread[10];
@@ -36,7 +44,7 @@ static int aim_x = SCREEN_WIDTH / 2; // 에임 초기 위치
 static int aim_y = SCREEN_HEIGHT / 2;
 static int accel_x = 0;
 static int accel_y = 0;
-
+int enemyNumber = 0;
 typedef struct {
     float x, y;
     float vx, vy;
@@ -152,7 +160,29 @@ void fireProjectile() {
         projectile.y = SCREEN_HEIGHT / 2;
         projectile.vx = (aim_x - projectile.x) / 10;
         projectile.vy = (aim_y - projectile.y) / 10;
+        bulletx = projectile.vx;
+        bullety = projectile.vy;
         projectile.active = true;
+    }
+}
+
+
+void enemyDistory() {
+
+    system("sudo aplay ./weak.wav");
+}
+
+
+void enemy() {
+    int enemyHp = (enemyNumber * 1);
+    int hit = 0;
+    if (bulletx == enemyx && bullety == enemyy) {
+        hit = 1;
+        enemyHp = enemyHp - hit;
+        if (enemyHp = 0) {
+            score++;
+            enemyDistory();
+        }
     }
 }
 
