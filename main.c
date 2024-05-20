@@ -32,7 +32,7 @@ static int msgID;
 BUTTON_MSG_T rcv;
 pthread_t thread[10];
 static int stage = 0;
-static int aim_x = SCREEN_WIDTH - 50; // 에임 초기 위치
+static int aim_x = SCREEN_WIDTH / 2; // 에임 초기 위치
 static int aim_y = SCREEN_HEIGHT / 2;
 static int accel_x = 0;
 static int accel_y = 0;
