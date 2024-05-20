@@ -173,7 +173,7 @@ void gameLoop() {
             }
         }
 
-        // 화면을 지우고 새로 그립니다.
+        
         memset(screen, 0, SCREEN_WIDTH * SCREEN_HEIGHT * sizeof(uint32_t));
         drawProjectile(screen, SCREEN_WIDTH, SCREEN_HEIGHT, &projectile);
 
