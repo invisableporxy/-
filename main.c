@@ -72,6 +72,9 @@ void* thread_timer(void* arg) {
         for (int t = 0; t <= 999999; t++) {
             fndDisp(t, MODE_STATIC_DIS);
             sleep(1);
+            if(finish==1){
+                break;
+            }
         }
     }
     return NULL;
