@@ -59,14 +59,14 @@ Projectile projectile;
 
 void start(){
     start=1;
-    if(start=1){
+    if(start==1){
         //text_Lcd =(print- start); //text_lcd start 출력
         thread_background_music();
     if(btn==1){
         round_N++;
         round();
     
-    }
+    }}
     else start=0;
 }
 
