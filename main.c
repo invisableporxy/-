@@ -46,7 +46,7 @@ static int accel_x = 0;
 static int accel_y = 0;
 int start=0;
 int enemyNumber = 0;
-
+int round_N = 0;
 typedef struct {
     float x, y;
     float vx, vy;
@@ -224,6 +224,10 @@ void start(){
     if(start=1){
         //text_Lcd =(print- start); //text_lcd start 출력
         thread_background_music();
+    if(btn==1){
+        round_N++;
+        round();
+    
     }
 }
 
