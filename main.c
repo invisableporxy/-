@@ -44,7 +44,9 @@ static int aim_x = SCREEN_WIDTH / 2; // 에임 초기 위치
 static int aim_y = SCREEN_HEIGHT / 2;
 static int accel_x = 0;
 static int accel_y = 0;
+int start=0;
 int enemyNumber = 0;
+
 typedef struct {
     float x, y;
     float vx, vy;
@@ -52,6 +54,7 @@ typedef struct {
 } Projectile;
 
 Projectile projectile;
+
 
 void updateProjectile(Projectile* p, float dt) {
     if (!p->active) return;
@@ -213,6 +216,19 @@ void gameLoop() {
     pthread_join(thread[0], NULL);
     pthread_join(thread[1], NULL);
 }
+
+
+
+void start(){
+    start=1
+    if(start=1){
+        //text_Lcd =(print- start); //text_lcd start 출력
+        thread_background_music();
+    }
+}
+
+
+
 
 int main(void) {
     initializeGame();
