@@ -48,6 +48,7 @@ int start=0;
 int enemyNumber = 0;
 int round_N = 0;
 int gameover=0;
+int player_record=0;
 int missioncomplete=0;
 
 typedef struct {
@@ -77,11 +78,30 @@ void gameover(){
      gameoevr=1;
      if(gameover==1){
        //text_Lcd =(print -gameover); // text_lcd gameover 출력
-        
+     if(text_Lcd=="gameover"){ //text_lcd에 gameover 출력되면
+       //text_Lcd = (print -player_recod); // text_lcd에 player 기록 출력
          thread_game_end_music(); // gameover 음악 재생
-      
+        //text_lcd에 모든플레이어 기록 출력// ??
+     if(btn==1){
+        start();
+     }}}
+    else gameover=0;
+}
 
 void missioncomplete(){
+     missioncomplete=1;
+     if(missioncomplete==1){
+       //text_Lcd =(print -missioncomplete); //text_lce missioncomplete 출력
+    if(text_Lcd=="missioncomplete"){ //text_lcd에 missioncomplete이 출력되면
+       //text_Lcd = (print -player_recod); // text_lcd에 player 기록 출력
+          thread_background_music(); // 배경음악 (다른군가?) 재생
+        //text_lcd에 모든플레이어 기록 출력// ??
+     if(btn==1){
+        start();
+     }}}
+    else missioncomplete=0;
+}
+      
 
 
 void updateProjectile(Projectile* p, float dt) {
