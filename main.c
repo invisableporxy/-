@@ -56,6 +56,20 @@ typedef struct {
 Projectile projectile;
 
 
+
+void start(){
+    start=1
+    if(start=1){
+        //text_Lcd =(print- start); //text_lcd start 출력
+        thread_background_music();
+    if(btn==1){
+        round_N++;
+        round();
+    
+    }
+}
+
+
 void updateProjectile(Projectile* p, float dt) {
     if (!p->active) return;
 
@@ -218,18 +232,6 @@ void gameLoop() {
 }
 
 
-
-void start(){
-    start=1
-    if(start=1){
-        //text_Lcd =(print- start); //text_lcd start 출력
-        thread_background_music();
-    if(btn==1){
-        round_N++;
-        round();
-    
-    }
-}
 
 
 
