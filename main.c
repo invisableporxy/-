@@ -47,6 +47,9 @@ static int accel_y = 0;
 int start=0;
 int enemyNumber = 0;
 int round_N = 0;
+int gameover=0;
+int missioncomplete=0;
+
 typedef struct {
     float x, y;
     float vx, vy;
@@ -69,6 +72,16 @@ void start(){
     }}
     else start=0;
 }
+
+void gameover(){
+     gameoevr=1;
+     if(gameover==1){
+       //text_Lcd =(print -gameover); // text_lcd gameover 출력
+        
+         thread_game_end_music(); // gameover 음악 재생
+      
+
+void missioncomplete(){
 
 
 void updateProjectile(Projectile* p, float dt) {
