@@ -263,7 +263,7 @@ typedef struct {
     	int height3 = 3; // 직사각형의 높이
 	} enemy3;
 
-int dx =round;
+int dx =round_N;
 int dy =0;
 //까지 전역수
 
