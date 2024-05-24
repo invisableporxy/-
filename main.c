@@ -237,6 +237,68 @@ void enemy() {
     }
 }
 
+//1. 적을 생성
+//2. 적을 이동
+//적을 먼저 직사각형으로 표현
+
+//부터
+typedef struct {
+    	int x1 = 0;      // 왼쪽 상단 x 좌표
+    	int y1 = 1;      // 왼쪽 상단 y 좌표
+    	int width1 = 1;  // 직사각형의 너비
+    	int height1 = 1; // 직사각형의 높이
+	} enemy1;
+	
+	typedef struct {
+    	int x2 = 0;      // 왼쪽 상단 x 좌표
+    	int y2 = 2;      // 왼쪽 상단 y 좌표
+    	int width =2;  // 직사각형의 너비
+    	int height=2; // 직사각형의 높이
+	} enemy2;
+
+	typedef struct {
+    	int x3 = 0;      // 왼쪽 상단 x 좌표
+    	int y3 = 3;      // 왼쪽 상단 y 좌표
+    	int width3 = 3;  // 직사각형의 너비
+    	int height3 = 3; // 직사각형의 높이
+	} enemy3;
+
+int dx =round;
+int dy =0;
+//까지 전역수
+
+void enemy appear (enemy1 a)
+	{
+	printf("Rect(x1: %d, y1: %d, width1: %d, height1: %d)\n", a.x, a.y, a.width, a.height);
+	}
+
+void enemy appear (enemy2 b)
+	{
+	printf("Rect(x2: %d, y2: %d, width2: %d, height2: %d)\n", b.x, b.y, b.width, b.height);
+	}
+
+void enemy appear (enemy3 c)
+	{
+	printf("Rect(x3: %d, y3: %d, width3: %d, height3: %d)\n", c.x, c.y, c.width, c.height);
+	}
+
+void enemy move(enemy1 *a, int dx, int dy)
+	{
+	a->x += dx;
+	a->y += dy;
+	}
+void enemy move(enemy2 *b, int dx, int dy)
+	{
+	b->x += dx;
+	b->y += dy;
+	}
+void enemy move(enemy3 *c, int dx, int dy)
+	{
+	c->x += dx;
+	c->y += dy;
+	}
+
+
 void gameLoop() {
     pthread_create(&thread[0], NULL, thread_timer, NULL);
     pthread_create(&thread[1], NULL, thread_background_music, NULL);
