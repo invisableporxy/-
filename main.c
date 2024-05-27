@@ -255,14 +255,14 @@ void fireProjectile(){
                 float speed = 10;  // 초기 속도
         }
         
->>>>>>> c4a4e4cbf59db9940aecbafc4223d670fe18889f
+
     }
 }
 
 
 
 
-}
+
 /*
 void fireProjectile() {
     if (!projectile.active) {
