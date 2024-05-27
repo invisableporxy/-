@@ -28,6 +28,8 @@
 #define GRAVITY 0.5f
 #define MESSAGE_ID 1234
 #define MODE_STATIC_DIS 0
+#define ENEMY_SPEED_INCREMENT
+
 
 static int score;
 static int msgID;
@@ -60,6 +62,25 @@ typedef struct {
     float speed;
     bool active;
 } Enemy;
+
+typedef enum{
+    TYPE_ENEMY1;
+    TYPE_ENEMY2;
+    TYPE_ENEMY3;
+}ENEMYTYPE;
+
+int assignEnemyHP(EnemyType type) {
+    switch (type) {
+        case ENEMY_TYPE_1:
+            return 1;
+        case ENEMY_TYPE_2:
+            return 2;
+        case ENEMY_TYPE_3:
+            return 3;
+        default:
+            return 1;
+    }
+}
 
 Enemy enemies[100];
 
@@ -228,6 +249,8 @@ void createEnemy(int index, int x, int y, int width, int height, int hp, float s
     enemies[index].speed = speed;
     enemies[index].active = true;
 }
+
+
 
 void updateEnemy(int index) {
 for (int i = 0; i < enemyNumber; i++) {
