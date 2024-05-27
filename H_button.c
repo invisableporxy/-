@@ -59,19 +59,19 @@ void* buttonThFunc(void*arg){
         }
         if ( stEvent.type == EV_KEY){
             switch(stEvent.code){
-                case KEY_VOLUMEUP: send.keyInput = 1;
+                case KEY_MENU: send.keyInput = 1;
                 msgsnd(msgID, &send.keyInput, sizeof(send.keyInput), 0);
                 break;
                 case KEY_HOME: send.keyInput = 2;
                 msgsnd(msgID, &send.keyInput, sizeof(send.keyInput), 0);
                 break;
-                case KEY_SEARCH: send.keyInput = 3;
+                case KEY_FireBullet: send.keyInput = 3;
                 msgsnd(msgID, &send.keyInput, sizeof(send.keyInput), 0);
                 break;
                 case KEY_BACK: send.keyInput = 4;
                 msgsnd(msgID, &send.keyInput, sizeof(send.keyInput), 0);
                 break;
-                case KEY_MENU: send.keyInput = 5;
+                case KEY_VOLUMEUP: send.keyInput = 5;
                 msgsnd(msgID, &send.keyInput, sizeof(send.keyInput), 0);
                 break;
                 case KEY_VOLUMEDOWN: send.keyInput = 6;

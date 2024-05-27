@@ -13,7 +13,7 @@
 #include <linux/input.h>
 
 #include "buzzer.h"
-#include "button.h"
+#include "buttong.h"
 #include "fnd.h"
 #include "colorled.h"
 #include "led.h"
@@ -176,6 +176,10 @@ void initializeGame() {
     fb_write(data, cols, rows);
 
     projectile.active = false;
+    //라운드 스타트 (N+1)
+    KEY_MENU();
+    round_N = round_N+;
+    
 }
 
 void updateAimPosition() {
@@ -203,6 +207,17 @@ void updateAimPosition() {
     } else if (aim_x < 0) {
         aim_x = 0;
     }
+}
+
+
+void bullet(){
+    if( round_N >0 ) {
+        butt
+    }
+
+
+
+
 }
 
 void fireProjectile() {

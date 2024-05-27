@@ -20,19 +20,19 @@ int main(void) {
         msgrcv(msgID, &rcv, sizeof(rcv.keyInput), 0, 0);
         switch (rcv.keyInput) {
             case 1:
-                printf("VOLUME UP\n");
+                printf("menu\n");
                 break;
             case 2:
                 printf("HOME\n");
                 break;
             case 3:
-                printf("SEARCH\n");
+                printf("FireBullet\n");
                 break;
             case 4:
                 printf("BACK\n");
                 break;
             case 5:
-                printf("MENU\n");
+                printf("VOLUME UP\n");
                 break;
             case 6:
                 printf("VOLUME DOWN\n");
@@ -43,6 +43,7 @@ int main(void) {
         switch (rcv.pressed) {
             case 1:
                 printf("BUTTON PRESSED\n\n");
+                
                 break;
             case 2:
                 printf("BUTTON UNPRESSED\n\n");
