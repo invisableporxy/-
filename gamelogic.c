@@ -312,9 +312,7 @@ void gameLoop() {
 }
 */
 
-void gameLoop(){
-    
-}
+
 
 
 int main(void) {
