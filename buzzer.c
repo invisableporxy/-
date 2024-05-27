@@ -104,6 +104,9 @@ void* buttonThFunc(void*arg){
             if ( stEvent.value ){ 
                 send.pressed=1;
                 msgsnd(msgID, &send.pressed,sizeof(send.pressed),0);
+
+
+
             }
             else { 
                 send.pressed=2;
@@ -115,6 +118,14 @@ void* buttonThFunc(void*arg){
     } // End of While
     close(fp);
 }
+
+
+
+
+
+
+
+
 
 int buttonInit(void){
     if (probeButtonPath(buttonPath) == 0){return 0;}

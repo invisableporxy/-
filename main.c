@@ -34,7 +34,7 @@
 #define bullety
 #define enemyx
 #define enemyy
-
+const float GRAVITY = 0.5f
 static int score;
 static int msgID;
 BUTTON_MSG_T rcv;
@@ -101,21 +101,32 @@ void missioncomplete(){
      }}}
     else missioncomplete=0;
 }
-      
+      //게임 시작, 끝
 
+void initProjectile(Projectile* p, float startX, float startY, float angle, float speed) {
+    p->x = startX;
+    p->y = startY;
+    p->vx = speed * cos(angle);
+    p->vy = speed * sin(angle);
+    p->active = 1;
+}
 
-void updateProjectile(Projectile* p, float dt) {
-    if (!p->active) return;
+//발사체 초기화
 
-    p->x += p->vx * dt;
-    p->y += p->vy * dt;
-    p->vy += GRAVITY * dt;
+void updateProjectile(Projectile* p) {
+    if (p->active) {
+        p->x += p->vx;
+        p->y += p->vy;
+        p->vy += GRAVITY;  // 중력 가속도 적용
 
-    // 화면을 벗어나면 발사체를 비활성화합니다.
-    if (p->x < 0 || p->x >= SCREEN_WIDTH || p->y >= SCREEN_HEIGHT) {
-        p->active = false;
+        // 화면을 벗어나면 비활성화
+        if (p->x < 0 || p->x > SCREEN_WIDTH || p->y > SCREEN_HEIGHT) {
+            p->active = 0;
+        }
     }
 }
+
+
 
 void drawProjectile(uint32_t* screen, int screenWidth, int screenHeight, Projectile* p) {
     int px = (int)p->x;
@@ -207,19 +218,36 @@ void updateAimPosition() {
     } else if (aim_x < 0) {
         aim_x = 0;
     }
+    return accel_x,accel_y;
 }
 
 
-void bullet(){
+
+void activate_fire(){
+
+
+
+
+}
+
+
+//슈도 코드
+void fireProjectile(){
     if( round_N >0 ) {
-        butt
+        updateAimPosition();
+        button_on = activate_fire();
+        if(fire==1){
+            updateAimPosition();
+            updateProjectile();
+        }
+        
     }
 
 
 
 
 }
-
+/*
 void fireProjectile() {
     if (!projectile.active) {
         projectile.x = SCREEN_WIDTH - 50;
@@ -230,7 +258,7 @@ void fireProjectile() {
         bullety = projectile.vy;
         projectile.active = true;
     }
-}
+} */
 
 
 void enemyDistory() {
@@ -258,27 +286,27 @@ void enemy() {
 
 //부터
 typedef struct {
-    	int x1 = 0;      // 왼쪽 상단 x 좌표
-    	int y1 = 1;      // 왼쪽 상단 y 좌표
+    	int x1 = 10;      // 왼쪽 상단 x 좌표
+    	int y1 = 780;      // 왼쪽 하단 y 좌표
     	int width1 = 1;  // 직사각형의 너비
     	int height1 = 1; // 직사각형의 높이
 	} enemy1;
 	
 	typedef struct {
-    	int x2 = 0;      // 왼쪽 상단 x 좌표
-    	int y2 = 2;      // 왼쪽 상단 y 좌표
-    	int width =2;  // 직사각형의 너비
+    	int x2 = 10;      // 왼쪽 상단 x 좌표
+    	int y2 = 780;      // 왼쪽 하단 y 좌표
+    	int width =1;  // 직사각형의 너비
     	int height=2; // 직사각형의 높이
 	} enemy2;
 
 	typedef struct {
-    	int x3 = 0;      // 왼쪽 상단 x 좌표
-    	int y3 = 3;      // 왼쪽 상단 y 좌표
-    	int width3 = 3;  // 직사각형의 너비
-    	int height3 = 3; // 직사각형의 높이
+    	int x3 = 10;      // 왼쪽 상단 x 좌표
+    	int y3 = 780;      // 왼쪽 하단 y 좌표
+    	int width3 = 2;  // 직사각형의 너비
+    	int height3 = 1; // 직사각형의 높이
 	} enemy3;
 
-int dx =round_N;
+int dx =(round_N * 3); // 라운드당 곱하기 3 
 int dy =0;
 //까지 전역수
 
@@ -318,7 +346,7 @@ void gameLoop() {
     pthread_create(&thread[0], NULL, thread_timer, NULL);
     pthread_create(&thread[1], NULL, thread_background_music, NULL);
 
-    while (stage != 4) {
+    while (round_N>0) {
         updateAimPosition();
 
         if (projectile.active) {
@@ -348,6 +376,8 @@ void gameLoop() {
 
 
 int main(void) {
+    Projectile projectile;
+    projectile.active = 0;  // 초기에는 비활성화 상태
     initializeGame();
     gameLoop();
     return 0;
