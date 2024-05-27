@@ -262,7 +262,7 @@ void drawEnemy(uint32_t* screen, int screenWidth, int screenHeight, Enemy* e) {
         }
     }
 }
-
+/*
 void gameLoop() {
     pthread_create(&thread[0], NULL, thread_timer, NULL);
     pthread_create(&thread[1], NULL, thread_background_music, NULL);
@@ -298,6 +298,12 @@ void gameLoop() {
     pthread_join(thread[0], NULL);
     pthread_join(thread[1], NULL);
 }
+*/
+
+void gameLoop(){
+    
+}
+
 
 int main(void) {
     projectile.active = false;  // 초기에는 비활성화 상태
@@ -307,3 +313,119 @@ int main(void) {
     gameLoop();
     return 0;
 }
+
+
+/*// 코드 일부분만을 다룸
+
+#define ENEMY_SPEED_INCREMENT 1 // 라운드마다 적의 이동 속도 증가량
+
+typedef struct {
+    int x, y;
+    int width, height;
+    int hp;
+    bool active;
+} Enemy;
+
+// 적 구조체를 유형별로 나누어 정의
+typedef enum {
+    ENEMY_TYPE_1,
+    ENEMY_TYPE_2,
+    ENEMY_TYPE_3
+} EnemyType;
+
+// 적 유형별로 HP를 할당하는 함수
+int assignEnemyHP(EnemyType type) {
+    switch (type) {
+        case ENEMY_TYPE_1:
+            return 1;
+        case ENEMY_TYPE_2:
+            return 2;
+        case ENEMY_TYPE_3:
+            return 3;
+        default:
+            return 1;
+    }
+}
+
+// 적 생성 함수
+void createEnemy(EnemyType type, int x, int y) {
+    enemy[enemyNumber].x = x;
+    enemy[enemyNumber].y = y;
+    enemy[enemyNumber].width = 50; // 적의 너비
+    enemy[enemyNumber].height = 50; // 적의 높이
+    enemy[enemyNumber].hp = assignEnemyHP(type);
+    enemy[enemyNumber].active = true;
+    enemyNumber++;
+}
+
+// 적 업데이트 함수
+void updateEnemy() {
+    for (int i = 0; i < enemyNumber; i++) {
+        if (enemy[i].active) {
+            // 각 라운드마다 적의 이동 속도를 증가시킴
+            enemy[i].x += (round_N * ENEMY_SPEED_INCREMENT);
+
+            // 게임 종료 조건: 적이 포탑에 도달하거나 시간이 종료될 경우
+            if (enemy[i].x >= TOWER_X_COORDINATE || timeIsUp) {
+                gameover();
+            }
+
+            // 발사체와의 충돌 검사
+            if (projectile.active &&
+                projectile.x > enemy[i].x && projectile.x < enemy[i].x + enemy[i].width &&
+                projectile.y > enemy[i].y && projectile.y < enemy[i].y + enemy[i].height) {
+                enemy[i].hp -= 1;
+                projectile.active = false;
+                if (enemy[i].hp <= 0) {
+                    enemy[i].active = false;
+                    score++;
+                    enemyDestroy();
+                }
+            }
+        }
+    }
+}
+
+// 게임 루프
+void gameLoop() {
+    while (round_N <= MAX_ROUNDS) {
+        // 10초마다 적 리스폰
+        if (timeElapsed % 10 == 0) {
+            createEnemy(ENEMY_TYPE_1, INITIAL_ENEMY_X, INITIAL_ENEMY_Y);
+        }
+
+        // 에임 조절
+        updateAimPosition();
+
+        // 발사체 업데이트
+        if (projectile.active) {
+            updateProjectile(&projectile);
+        }
+
+        // 적 업데이트
+        updateEnemy();
+
+        // 게임 종료 및 결과 표시
+        if (gameIsOver) {
+            if (round_N < MAX_ROUNDS) {
+                if (gameover()) {
+                    displayGameOverScreen();
+                    playGameOverSound();
+                    sleep(10);
+                    displayMainMenu();
+                }
+            } else {
+                if (missioncomplete()) {
+                    displayMissionCompleteScreen();
+                    playMissionCompleteSound();
+                    sleep(10);
+                    displayMainMenu();
+                }
+            }
+        }
+
+        usleep(16000);
+        timeElapsed++;
+    }
+}
+*/
