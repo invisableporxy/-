@@ -7,6 +7,7 @@
 #include <sys/types.h>
 #include <sys/msg.h>
 #include <sts/stat.h>
+#include <sys/stat.h>
 #include <pthread.h>
 #include <stdbool.h>
 #include <math.h>
@@ -273,7 +274,34 @@ void fireProjectile() {
     }
 } */
 
+/*   ---- 
+	void fireProjectile() {
+    if (round_N > 0) {
+        updateAimPosition();
+        if (fire == 1) { 
+            updateAimPosition();
+            updateProjectile(&projectile);
+            activate_fire();
+            
+            // 발사 위치
+            float startX = 100;
+            float startY = 500;
 
+            // 발사각도
+            float deltaX = aim_x - startX;
+            float deltaY = aim_y - startY;
+            float angle = atan2(deltaY, deltaX);
+
+            // 각도에 따른 속도 조정
+            float distance = sqrt(deltaX * deltaX + deltaY * deltaY);
+            float speed = distance / 50; 
+
+            // 발사체 초기화
+            initProjectile(&projectile, startX, startY, angle, speed);
+        }
+    }
+}
+*/
 void enemyDistory() {
 
     system("sudo aplay ./weak.wav");
