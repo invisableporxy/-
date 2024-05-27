@@ -230,6 +230,18 @@ void createEnemy(int index, int x, int y, int width, int height, int hp, float s
 }
 
 void updateEnemy(int index) {
+for (int i = 0; i < enemyNumber; i++) {
+        if (enemy[i].active) {
+            // 각 라운드마다 적의 이동 속도를 증가시킴
+            enemy[i].x += (round_N * ENEMY_SPEED_INCREMENT);
+
+            // 게임 종료 조건: 적이 포탑에 도달하거나 시간이 종료될 경우
+            if (enemy[i].x >= TOWER_X_COORDINATE || timeIsUp) {
+                gameover();
+            }
+        }
+}
+
     if (enemies[index].active) {
         enemies[index].x += enemies[index].speed;
         if (enemies[index].x > SCREEN_WIDTH) {
