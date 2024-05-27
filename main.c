@@ -223,8 +223,9 @@ void updateAimPosition() {
 
 
 
-void activate_fire(){
-
+void activate_fire(){  
+    
+    
 
 
 
@@ -235,10 +236,11 @@ void activate_fire(){
 void fireProjectile(){
     if( round_N >0 ) {
         updateAimPosition();
-        button_on = activate_fire();
+        button_on = (fire- 1);
         if(fire==1){
             updateAimPosition();
             updateProjectile();
+            active_fire();
         }
         
     }
