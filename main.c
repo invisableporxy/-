@@ -241,6 +241,17 @@ void fireProjectile(){
             updateAimPosition();
             updateProjectile();
             active_fire();
+              // 발사 위치
+                float startX = 100;
+                float startY = 500;
+
+                // 발사각 계산
+                float deltaX = aim_x - startX;
+                float deltaY = aim_y - startY;
+                float angle = atan2(deltaY, deltaX);
+
+                // 발사체 초기화
+                float speed = 10;  // 초기 속도
         }
         
     }
