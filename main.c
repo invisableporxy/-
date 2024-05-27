@@ -255,7 +255,9 @@ void fireProjectile(){
                 float speed = 10;  // 초기 속도
         }
         
+>>>>>>> c4a4e4cbf59db9940aecbafc4223d670fe18889f
     }
+}
 
 
 
@@ -404,7 +406,7 @@ void gameLoop() {
         memset(screen, 0, SCREEN_WIDTH * SCREEN_HEIGHT * sizeof(uint32_t));
         drawProjectile(screen, SCREEN_WIDTH, SCREEN_HEIGHT, &projectile);
 
-        usleep(100000);
+        usleep(16000);
     }
 
     pthread_join(thread[0], NULL);
@@ -417,7 +419,7 @@ void gameLoop() {
 
 
 int main(void) {
-    Projectile projectile;
+    Projectile projectile = {0, 0, 0, 0, false};
     projectile.active = 0;  // 초기에는 비활성화 상태
     initializeGame();
     gameLoop();
